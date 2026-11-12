@@ -1,0 +1,20 @@
+# エンジンが生成する型（ビルドごとに変わる）
+.claude-plugin/types/
+
+# ローカル設定・秘密情報
+.claude/settings.local.json
+.env
+.env.*
+*.pem
+*.key
+
+# 依存・ビルド成果物
+node_modules/
+dist/
+*.tsbuildinfo
+
+# OS・エディタ
+.DS_Store
+.vscode/
+.idea/
+*.swp

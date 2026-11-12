@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  plugin:
+    name: validate and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      # 型定義やローカル環境とずらさないため、手元と同じ版に固定する
+      CLAUDE_CODE_VERSION: 2.1.322
+      DISABLE_AUTOUPDATER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Claude Code
+        run: npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
+      - name: Validate plugin
+        run: claude plugin validate .
+      - name: Test plugin
+        run: claude plugin test .
+
+  secrets:
+    name: secret scan
+    runs-on: ubuntu-latest
+    # gitleaks-action は PR のコミット一覧を API で読む
+    permissions:
+      contents: read
+      pull-requests: read
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

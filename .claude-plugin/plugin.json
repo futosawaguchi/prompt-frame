@@ -1,0 +1,22 @@
+{
+  "name": "prompt-frame",
+  "version": "0.1.0",
+  "description": "Wraps your own prompts in the Claude Code transcript in a colored border.",
+  "author": { "name": "futosawaguchi" },
+  "license": "MIT",
+  "userConfig": {
+    "borderColor": {
+      "type": "string",
+      "title": "Border color",
+      "description": "A theme color key (suggestion, claude, success, warning, permission, planMode, ...) or #RRGGBB.",
+      "default": "suggestion"
+    },
+    "borderStyle": {
+      "type": "string",
+      "title": "Border style",
+      "description": "The line style of the border.",
+      "default": "round",
+      "options": ["round", "single", "double", "bold", "dashed", "classic"]
+    }
+  }
+}

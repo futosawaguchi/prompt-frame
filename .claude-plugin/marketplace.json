@@ -1,0 +1,14 @@
+{
+  "name": "prompt-frame",
+  "owner": { "name": "futosawaguchi" },
+  "metadata": {
+    "description": "Claude Code plugins by futosawaguchi."
+  },
+  "plugins": [
+    {
+      "name": "prompt-frame",
+      "source": "./",
+      "description": "Wraps your own prompts in the Claude Code transcript in a colored border."
+    }
+  ]
+}
