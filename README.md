@@ -7,6 +7,7 @@ Claude Code のトランスクリプトで、自分が入力したプロンプ�
 ## 特徴
 
 - ターミナルで自分が打ったプロンプトだけを囲む。通知や他のエージェントからのメッセージはそのまま
+- Claude の質問に答えた内容も、同じ枠で囲む
 - 長いプロンプトは枠の中で折り返す。枠は本文の幅に合わせて縮む
 - `/prompt-frame` で開くパネルから、枠の色と線の種類を見本を見ながら変えられる
 - 表示を変えるだけで、保存されるメッセージやモデルに渡る内容は変えない
@@ -29,8 +30,6 @@ Claude Code のプロンプトで次を実行します。
 ```sh
 claude plugin install prompt-frame --marketplace futosawaguchi/prompt-frame
 ```
-
-> リポジトリが private のあいだは、GitHub でこのリポジトリを読める人だけがインストールできます。その人のパソコンに github.com の認証情報（SSH 鍵、または `gh auth login` のあと `gh auth setup-git`）が必要です。
 
 ## 使い方
 
